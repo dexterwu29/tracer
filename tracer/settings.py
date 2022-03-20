@@ -121,6 +121,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# ###### SMS ######
+# 腾讯云短信应用 app_id
+TENCENT_SMS_APP_ID = 6666666666
+# 腾讯云短信应用 app_key
+TENCENT_SMS_APP_KEY = "66666666666666666666666666666666"
+# 腾讯云短信签名内容
+TENCENT_SMS_SIGN = "Python之路"
+
+TENCENT_SMS_TEMPLATE = {
+    "register": 1334457,
+    "login": 1334459,
+}
+
 # 配置local_settings文件
 try:
     from .local_settings import *
