@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'web.middlewares.auth.AuthMiddleware',
 ]
 
 ROOT_URLCONF = 'tracer.urls'
@@ -133,6 +134,22 @@ TENCENT_SMS_SIGN = "Python之路"
 TENCENT_SMS_TEMPLATE = {
     "register": 1334457,
     "login": 1334459,
+}
+
+# 配置redis
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://10.211.55.28:6379", # 安装redis的主机的 IP 和 端口
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            "CONNECTION_POOL_KWARGS": {
+                "max_connections": 1000,
+                "encoding": 'utf-8'
+            },
+            "PASSWORD": "foobared" # redis密码
+        }
+    }
 }
 
 # 配置local_settings文件
